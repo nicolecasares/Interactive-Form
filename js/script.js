@@ -3,14 +3,14 @@ nameInput.focus();
 
 
 const validateJobTitle = () => {
-    const titleInput = document.querySelector('#title');
+    const titleInput = document.querySelector('#title').value;
     const otherJobInput = document.querySelector('#other-job-role');
-    const otherOption = titleInput[6];
+    const otherOption = document.querySelector('option[value="other"]').value;
 
     otherJobInput.style.display = "none";
-    console.log(otherOption);
+    console.log(otherOption, titleInput);
 
-    if(titleInput.value == "other") {
+    if(titleInput === otherOption) {
         alert("Please select a card type");
         otherJobInput.style.display = "inline-block";
     }
