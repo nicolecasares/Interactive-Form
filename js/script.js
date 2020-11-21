@@ -14,12 +14,11 @@ const validateJobTitle = () => {
     const otherOption = document.querySelector('option[value="other"]').value;
 
     otherJobInput.style.display = "none";
-    console.log(otherOption, titleInput);
 
-    titleInput.addEventListener('click', function(e) { 
+    titleInput.addEventListener('change', function(e) { 
         console.log(e.target.value);
 
-        if(titleInput === otherOption) {
+        if(e.target.value === 'other') {
             alert("Please select a card type");
             otherJobInput.style.display = "inline-block";
         }
