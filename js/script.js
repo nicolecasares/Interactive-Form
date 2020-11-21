@@ -1,10 +1,7 @@
 const nameInput = document.querySelector('input#name');
 nameInput.focus();
 
-// future nicole, wrap this in an event listener
-
-// .addEventListener('click', function(event) { 
-//     console.log(event.target.value) 
+//this fuction validates the job title drop down menu. If a user selects other then they will be given the option to type one in
 const validateJobTitle = () => {
     const titleInput = document.querySelector('#title');
     const titleInputeValue = titleInput.value;
