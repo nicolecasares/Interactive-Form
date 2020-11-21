@@ -2,7 +2,7 @@
   Base and header styles
 ==================================== */
 
-@import url('https://fonts.googleapis.com/css?family=Nunito|Roboto+Mono');
+@import url('https://fonts.googleapis.com/css2?family=Lora&family=Roboto+Mono:ital@1&display=swap');
 
 * {
   box-sizing: border-box;
@@ -17,11 +17,12 @@ html {
 body,
 input,
 button {
-	font-family: 'Nunito', sans-serif;
+	font-family: 'Lora', serif;
 }
 
 body {
-  background: rgba(218, 174, 81, 0.1);
+  background: rgba(2, 201, 216, 0.1);
+  
 }
 
 header {
@@ -29,7 +30,7 @@ header {
 	color: rgb(255, 255, 255);
 	width: 100%;
 	padding: 10px 0;
-	background: linear-gradient(90deg, rgba(213, 51, 105, 1) 0%, rgba(218, 174, 81, 1) 100%);
+	background: linear-gradient(90deg, rgb(175 29 160) 0%, rgb(2 201 216) 100%);
 }
 
 .header-container {
