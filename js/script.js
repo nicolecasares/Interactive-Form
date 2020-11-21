@@ -19,7 +19,6 @@ const validateJobTitle = () => {
         console.log(e.target.value);
 
         if(e.target.value === 'other') {
-            alert("Please select a card type");
             otherJobInput.style.display = "inline-block";
         }
     }); 
