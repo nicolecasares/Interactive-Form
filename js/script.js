@@ -13,6 +13,8 @@ const validateJobTitle = () => {
 
         if(e.target.value === 'other') {
             otherJobInput.style.display = "inline-block";
+        } else {
+            otherJobInput.style.display = "none";
         }
     }); 
     
@@ -37,10 +39,18 @@ const validateColor = () => {
         if(designLable.value === 'js puns') {
             heartJsOptions.forEach(function(color){
                 color.style.display = 'none';
+                jsPunsOptions.forEach(function(color){
+                    color.style.display = 'block'; 
+                });
             });
-        }else if(designLable.value === 'heart js') {
+        }
+        
+        if(designLable.value === 'heart js') {
             jsPunsOptions.forEach(function(color){
-                color.style.display = 'none';
+                color.style.display = 'none'; 
+            });
+            heartJsOptions.forEach(function(color){
+                color.style.display = 'block';
             });
         }
     });
