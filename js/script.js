@@ -57,6 +57,36 @@ const validateColor = () => {
 
 };
 
+//this fuction will validate the cost of the events selected
+const validateCost = () => {
+    let activityCost = document.querySelector('#activities-cost');
+    const eventOptions = document.querySelectorAll('#activities-box label input');
+    let price = 0;
+
+    for(let i = 0; i < eventOptions.length; i++){
+        const event = eventOptions[i];
+
+        event.addEventListener('change', function(e) {
+
+            if (this.checked) {
+              console.log("Checkbox is checked..");
+              price += 100;
+
+            } else {
+              console.log("Checkbox is not checked..");
+              price -= 100;
+            } //ends if
+
+            activityCost.innerHTML = `Total: $${price}`
+            
+        });//end event listener
+
+    } //ends for loop
+
+}; //ends validateCost function
+
+
 validateJobTitle();
 validateColor();
+validateCost();
 
