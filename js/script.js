@@ -85,8 +85,50 @@ const validateCost = () => {
 
 }; //ends validateCost function
 
+const selectPayment = () => {
+    const paymentBox = document.querySelector('.payment-method-box');
+    // const creditCardOption = document.querySelector('option[value="credit-card"]');
+    // const paypalOption = document.querySelector('option[value="paypal"]');
+    // const bitcoinOption = document.querySelector('option[value="bitcoin"]');
+    const creditCard = document.querySelector('#credit-card');
+    const paypal = document.querySelector('#paypal');
+    const bitcoin = document.querySelector('#bitcoin');
+
+    paypal.style.display = 'none';
+    bitcoin.style.display = 'none';
+
+    paymentBox.addEventListener('change', function(e) { 
+
+        if(e.target.value === 'credit-card') {
+            paypal.style.display = "none";
+            bitcoin.style.display = "none";
+            creditCard.style.display = "block";
+        } else if(e.target.value === 'paypal'){
+            creditCard.style.display = "none";
+            bitcoin.style.display = "none";
+            paypal.style.display = "block";
+        } else {
+            creditCard.style.display = "none";
+            bitcoin.style.display = "block";
+            paypal.style.display = "none";
+
+        }
+    }); 
+
+
+
+};
+
+const validatePayment = () => {
+    
+
+    selectPayment();
+
+};
+
 
 validateJobTitle();
 validateColor();
 validateCost();
+validatePayment();
 
