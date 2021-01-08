@@ -81,15 +81,15 @@ const validateCost = () => {
             
         });//end event listener
 
+        
+
     } //ends for loop
 
 }; //ends validateCost function
 
 const selectPayment = () => {
     const paymentBox = document.querySelector('.payment-method-box');
-    // const creditCardOption = document.querySelector('option[value="credit-card"]');
-    // const paypalOption = document.querySelector('option[value="paypal"]');
-    // const bitcoinOption = document.querySelector('option[value="bitcoin"]');
+
     const creditCard = document.querySelector('#credit-card');
     const paypal = document.querySelector('#paypal');
     const bitcoin = document.querySelector('#bitcoin');
@@ -103,6 +103,7 @@ const selectPayment = () => {
             paypal.style.display = "none";
             bitcoin.style.display = "none";
             creditCard.style.display = "block";
+            return creditCard;
         } else if(e.target.value === 'paypal'){
             creditCard.style.display = "none";
             bitcoin.style.display = "none";
@@ -120,10 +121,79 @@ const selectPayment = () => {
 };
 
 const validatePayment = () => {
-    
-
     selectPayment();
 
+};
+
+const validateForm = () => {
+    let myForm = document.querySelector("form");
+    let formHint = document.querySelector('#form-hint');
+    const userEmail = document.querySelector('#email');
+    const userCreditCardNum = document.querySelector('#cc-num');
+
+    function emailValid(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    emailValid(userEmail);
+
+    function validateCreditCardNum(num){
+         regexp = /^(?:(4[0-9]{12}(?:[0-9]{3})?)|(5[1-5][0-9]{14})|(6(?:011|5[0-9]{2})[0-9]{12})|(3[47][0-9]{13})|(3(?:0[0-5]|[68][0-9])[0-9]{11})|((?:2131|1800|35[0-9]{3})[0-9]{11}))$/;
+  
+        if (regexp.test(num))
+          {
+            return true;
+          }
+        else
+          {
+            return false;
+          }
+    }
+
+    validateCreditCardNum(userCreditCardNum);
+
+    function validateZip(num){
+        regexp = /(^\d{5}$)|(^\d{5}-\d{4}$)/;
+
+        if (regexp.test(num))
+        {
+          return true;
+        }
+      else
+        {
+          return false;
+        }
+    }
+
+
+    myForm.addEventListener("submit", function(e){
+        // e.preventDefault(); 
+        if(nameInput.value === ''){
+            e.preventDefault();  
+            console.log('no name'); 
+            formHint.innerHTML = '** The "Name" field cannot be blank or empty.';
+            formHint.style.background = 'red';
+        }
+        if (emailValid(userEmail) == false) {
+            console.log('no email')
+            e.preventDefault();
+            formHint.innerHTML = '** The "Email Address" field must contain a validly formatted email address';
+            formHint.style.background = 'red';
+          
+        } 
+
+        let eventsSelected = document.querySelectorAll('#activities input[type="checkbox"]:checked').length
+
+        if (eventsSelected <= 0) {
+            e.preventDefault();
+            formHint.innerHTML = "Please check at least one event";
+          } 
+        if(validateCreditCardNum(userCreditCardNum) == false){
+            e.preventDefault();
+            formHint.innerHTML = '** invalid credit card number';
+
+        }
+    });
 };
 
 
@@ -131,4 +201,5 @@ validateJobTitle();
 validateColor();
 validateCost();
 validatePayment();
+validateForm();
 
